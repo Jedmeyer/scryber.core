@@ -757,7 +757,7 @@ namespace Scryber.Drawing
          * Parse a data uri and return a record 
          * @param uri 
          */
-        internal record UriData { public string mediaType; public string parameters; public string encoding; public string data; }
+        internal class UriData { public string mediaType; public string parameters; public string encoding; public string data; }
 
         private static readonly Regex splitter = new Regex(@"^data:([-\w]+\/[-+\w.]+)?((?:;?[\w]+=[-\w]+)*);(base64)?,(.*)");
 

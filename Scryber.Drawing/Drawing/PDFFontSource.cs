@@ -81,7 +81,7 @@ namespace Scryber.Drawing
 
             if (value.IndexOf(',') > 0)
             {
-                var all = value.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                var all = value.Split(',', StringSplitOptions.RemoveEmptyEntries);
                 PDFFontSource curr = null;
                 PDFFontSource next;
                 foreach (var one in all)

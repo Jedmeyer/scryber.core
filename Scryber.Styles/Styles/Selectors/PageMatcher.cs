@@ -52,7 +52,7 @@ namespace Scryber.Styles.Selectors
             PageMatcher pgm = new PageMatcher();
             string[] all;
             if (selector.IndexOf(" ") > 0)
-                all = selector.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                all = selector.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             else
                 all = new string[] { selector };
 

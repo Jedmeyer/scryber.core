@@ -523,7 +523,8 @@ namespace Scryber.Resources
                 throw new NullReferenceException(string.Format(Errors.FontDefinitionDoesNotHaveFile, this.FullName));
             OpenType.SubTables.CMapEncoding encoding = AssertGetTTFEncoding();
 
-            System.Drawing.SizeF size = this.TTFFile.MeasureString(encoding, chars, startOffset, fontSize, available, wordBoundary, out charsfitted);
+            var ttfSize = this.TTFFile.MeasureString(encoding, chars, startOffset, fontSize, available, wordBoundary, out charsfitted);
+            System.Drawing.SizeF size = new System.Drawing.SizeF((float)ttfSize.RequiredWidth, (float)ttfSize.RequiredHeight);
             return new PDFSize(size.Width, size.Height);
         }
 
@@ -547,7 +548,9 @@ namespace Scryber.Resources
                 throw new NullReferenceException(string.Format(Errors.FontDefinitionDoesNotHaveFile, this.FullName));
             OpenType.SubTables.CMapEncoding encoding = AssertGetTTFEncoding();
 
-            System.Drawing.SizeF size = this.TTFFile.MeasureString(encoding, chars, startOffset, fontSize, available, wordSpace, charSpace, hScale, vertical, wordBoundary, out charsfitted);
+            var ttfSize = this.TTFFile.MeasureString(encoding, chars, startOffset, fontSize, available, wordSpace, charSpace, hScale, vertical, wordBoundary, out charsfitted);
+            System.Drawing.SizeF size = new System.Drawing.SizeF((float)ttfSize.RequiredWidth, (float)ttfSize.RequiredHeight);
+
             return new PDFSize(size.Width, size.Height);
         }
 
@@ -1127,16 +1130,16 @@ namespace Scryber.Resources
         /// </summary>
         /// <param name="ttf">The Open Type instance to check</param>
         /// <returns>True is this font can be embedded</returns>
-        private static bool IsEmbeddable(Scryber.OpenType.TTFFile ttf)
+        private static bool IsEmbeddable(TTFFile ttf)
         {
             Scryber.OpenType.SubTables.OS2Table os2 = ttf.Tables.WindowsMetrics;
 
-            if (os2.FSType == Scryber.OpenType.SubTables.FontRestrictions.InstallableEmbedding)
+            if (os2.FSType == FontRestrictions.InstallableEmbedding)
                 return true;
-            else if ((os2.FSType & Scryber.OpenType.SubTables.FontRestrictions.NoEmbedding) > 0)
+            else if ((os2.FSType & FontRestrictions.NoEmbedding) > 0)
                 return false;
-            else if ((os2.FSType & Scryber.OpenType.SubTables.FontRestrictions.PreviewPrintEmbedding) > 0 ||
-                     (os2.FSType & Scryber.OpenType.SubTables.FontRestrictions.EditableEmbedding) > 0)
+            else if ((os2.FSType & FontRestrictions.PreviewPrintEmbedding) > 0 ||
+                     (os2.FSType & FontRestrictions.EditableEmbedding) > 0)
                 return true;
             else
                 return false;

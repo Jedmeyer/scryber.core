@@ -1270,20 +1270,20 @@ namespace Scryber.Drawing
         /// </summary>
         /// <param name="fs"></param>
         /// <returns></returns>
-        private static System.Drawing.FontStyle GetFontStyle(Scryber.OpenType.SubTables.FontSelection fs, Scryber.OpenType.SubTables.WeightClass wc)
+        private static System.Drawing.FontStyle GetFontStyle(FontSelection fs, WeightClass wc)
         {
             System.Drawing.FontStyle style = System.Drawing.FontStyle.Regular;
 
-            if ((fs & Scryber.OpenType.SubTables.FontSelection.Italic) > 0)
+            if ((fs & FontSelection.Italic) > 0)
                 style |= System.Drawing.FontStyle.Italic;
-            if ((fs & Scryber.OpenType.SubTables.FontSelection.Underscore) > 0)
+            if ((fs & FontSelection.Underscore) > 0)
                 style |= System.Drawing.FontStyle.Underline;
-            if ((fs & Scryber.OpenType.SubTables.FontSelection.Strikeout) > 0)
+            if ((fs & FontSelection.Strikeout) > 0)
                 style |= System.Drawing.FontStyle.Strikeout;
-            if ((fs & Scryber.OpenType.SubTables.FontSelection.Bold) > 0)
+            if ((fs & FontSelection.Bold) > 0)
                 style |= System.Drawing.FontStyle.Bold;
 
-            if (wc == OpenType.SubTables.WeightClass.Bold)
+            if (wc == WeightClass.Bold)
                 style |= System.Drawing.FontStyle.Bold;
 
             return style;

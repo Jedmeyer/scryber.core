@@ -64,7 +64,7 @@ namespace Scryber.Svg.Components
 
                 if (value.IndexOf(" ") > 0)
                 {
-                    var each = value.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                    var each = value.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                     var one = each[0];
                     var two = each[1]; //safe with this, as we have definitely got at least 2
 

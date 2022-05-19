@@ -1,10 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Scryber.Core.Mvc</PackageId>
-    <PackageVersion>5.1.0.2-beta</PackageVersion>
     <Version>1.0.1-alpha</Version>
     <Authors>richard@scryber.co.uk</Authors>
     <Description>The Mvc extensions for the Scryber.Core PDF creation engine - change the way you make documents.
@@ -76,7 +75,6 @@ See: https://scrybercore.readthedocs.io/en/latest/version_history.html for a ful
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
-    <PackageReference Include="Scryber.Core" Version="5.1.0.2-beta" />
   </ItemGroup>
       
   <ItemGroup>
@@ -90,6 +88,9 @@ See: https://scrybercore.readthedocs.io/en/latest/version_history.html for a ful
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Scryber.Drawing\Scryber.Drawing.csproj" />
   </ItemGroup>
     
 </Project>

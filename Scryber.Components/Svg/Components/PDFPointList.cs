@@ -73,7 +73,7 @@ namespace Scryber.Svg.Components
             if (string.IsNullOrEmpty(value))
                 return all;
 
-            var vals = value.Split(Separators, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            var vals = value.Split(Separators, StringSplitOptions.RemoveEmptyEntries );
 
             for (int i = 1; i < vals.Length; i+= 2)
             {

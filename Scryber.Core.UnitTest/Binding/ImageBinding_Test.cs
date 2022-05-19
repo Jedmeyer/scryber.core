@@ -99,7 +99,7 @@ namespace Scryber.Core.UnitTests.Binding
 #endif
 
             path = System.IO.Path.GetFullPath(path);
-            if (!path.EndsWith("/"))
+            if (!path.EndsWith("/") && !path.EndsWith("\\"))
                 path += "/";
 
             var imgData1 = Scryber.Drawing.PDFImageData.LoadImageFromLocalFile(path + "Toroid24.jpg");
